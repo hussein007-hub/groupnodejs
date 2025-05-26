@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logging out...</title>
+  <script>
+    async function logout() {
+      try {
+        // POST /logout
+        const res = await fetch("http://localhost:5000/logout", {
+          method: "POST",
+          credentials: "include"
+        });
+        // Since backend redirects, we just navigate to /login anyway
+        window.location.href = "/login";
+      } catch (err) {
+        console.error("Logout error:", err);
+        window.location.href = "/login";
+      }
+    }
+    logout();
+  </script>
+</head>
+<body>
+  <h2>Logging out, please wait...</h2>
+  <p>If you are not redirected automatically, <a href="/login">click here to login</a>.</p>
+</body>
+</html>

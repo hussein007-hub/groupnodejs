@@ -23,30 +23,29 @@ route.post("/login", async (req, res) => {
     "SELECT * FROM users WHERE username = ? ",
     [username]
   );
-  if (!result) {
-    res.send("Incorrect username");
-  } else {
-    // compare password
-    const isPasswordMatch = await bcrypt.compare(password, result.password);
 
-    if (isPasswordMatch) {
-      // TODO : add data in the session
-      //   delete result.password;
-      req.session.user = result;
-      const user = res.send({
-        message: "Logged in successfully",
-        user: result,
-      });
-    } else {
-      res.send("Incorrect password");
-    }
+  if (!result) {
+    return res.status(400).json({ message: "Incorrect username" });
+  }
+
+  const isPasswordMatch = await bcrypt.compare(password, result.password);
+
+  if (isPasswordMatch) {
+    req.session.user = result; // store user in session
+
+    return res.json({
+      message: "Logged in successfully",
+      redirect: "/dashboard"
+    });
+  } else {
+    return res.status(400).json({ message: "Incorrect password" });
   }
 });
 
 // user logout
 route.get("/logout", (req, res) => {
   req.session.destroy();
-  res.send("Logout Successffully");
+  res.send("Logout Successfully");
 });
 
 // get logged in user
