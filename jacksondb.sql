@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 23, 2025 at 11:56 AM
+-- Host: localhost
+-- Generation Time: May 29, 2025 at 12:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bookverse`
+-- Database: `jacksondb`
 --
 
 -- --------------------------------------------------------
@@ -42,7 +42,8 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `title`, `author`, `genre`, `instock`, `price`, `createdAt`) VALUES
-(5, 'The middle of realities', 'James ', 'Literature', 0, 100, '2025-05-22 12:16:38');
+(6, 'main cump', 'adolf hitler', 'history', 1, 89, '2025-05-29 10:31:27'),
+(7, 'php', 'rasmus lodrfin', 'programming', 1, 890, '2025-05-29 10:37:14');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `fullnames`) VALUES
-(2, 'me', '$2b$10$6wxq4wUYJ8JxrcWoQXNFFudlE.XqKdYkoW5IHH9ju/0pVrA8uQrYC', 'Makoma'),
 (3, 'gerardine', '$2b$10$KdrRibvt3hestgnVGETnxOGAeYj8jGIknGXV4KtocdYvEk61zi666', 'HOSIRIYO Gerardine');
 
 --
@@ -89,13 +89,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

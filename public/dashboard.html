@@ -4,68 +4,297 @@
   <meta charset="UTF-8" />
   <title>Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1e40af;
+    }
+    
+    button {
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .logout-btn {
+      background-color: #ef4444;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+    }
+    
+    .logout-btn:hover {
+      background-color: #dc2626;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+    
+    .form-grid {
+      display: grid;
+      gap: 16px;
+    }
+    
+    @media (min-width: 768px) {
+      .form-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .form-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+    
+    input {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+    
+    .add-btn {
+      background-color: #2563eb;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .add-btn:hover {
+      background-color: #1d4ed8;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    th, td {
+      padding: 12px 24px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    th {
+      background-color: #f9fafb;
+      font-size: 12px;
+      font-weight: 500;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    tr:hover {
+      background-color: #f9fafb;
+    }
+    
+    .text-green {
+      color: #16a34a;
+    }
+    
+    .text-red {
+      color: #dc2626;
+    }
+    
+    .action-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .edit-btn {
+      color: #2563eb;
+      margin-right: 12px;
+    }
+    
+    .edit-btn:hover {
+      color: #1e40af;
+    }
+    
+    .delete-btn {
+      color: #dc2626;
+    }
+    
+    .delete-btn:hover {
+      color: #b91c1c;
+    }
+    
+    /* Modal styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    
+    .modal-content {
+      background-color: white;
+      border-radius: 8px;
+      padding: 24px;
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+    }
+    
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+    
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    
+    .cancel-btn {
+      background-color: #e5e7eb;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+    }
+    
+    .cancel-btn:hover {
+      background-color: #d1d5db;
+    }
+    
+    .save-btn {
+      background-color: #2563eb;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+    }
+    
+    .save-btn:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-
-  <div class="container mx-auto px-4 py-8">
+<body>
+  <div class="container">
     <!-- Header -->
-    <header class="flex justify-between items-center mb-8">
-      <h1 class="text-3xl font-bold text-primary-700">Books Dashboard</h1>
-      <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition">
+    <header>
+      <h1>Books Dashboard</h1>
+      <button id="logoutBtn" class="logout-btn">
         Logout
       </button>
     </header>
 
     <!-- Add New Book Form -->
-    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-      <h2 class="text-xl font-semibold text-gray-800 mb-4">Add New Book</h2>
-      <form id="addBookForm" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        <input type="text" id="title" placeholder="Title" required 
-          class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"/>
-        <input type="text" id="author" placeholder="Author" required 
-          class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"/>
-        <input type="text" id="genre" placeholder="Genre" required 
-          class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"/>
-        <input type="number" step="0.01" id="price" placeholder="Price" required 
-          class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"/>
-        <input type="number" id="instock" placeholder="In Stock" required 
-          class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"/>
-        <button type="submit" 
-          class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition flex items-center justify-center gap-2">
+    <div class="card">
+      <h2>Add New Book</h2>
+      <form id="addBookForm" class="form-grid">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="text" id="genre" placeholder="Genre" required>
+        <input type="number" step="0.01" id="price" placeholder="Price" required>
+        <input type="number" id="instock" placeholder="In Stock" required>
+        <button type="submit" class="add-btn">
           <i class="fas fa-plus"></i> Add Book
         </button>
       </form>
     </div>
 
     <!-- Books Table -->
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="overflow-x-auto">
-        <table id="booksTable" class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Genre</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">In Stock</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="booksTableBody" class="bg-white divide-y divide-gray-200"></tbody>
-        </table>
-      </div>
+    <div>
+      <table id="booksTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>In Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="booksTableBody"></tbody>
+      </table>
     </div>
   </div>
 
   <script>
-    const apiUrl = "http://localhost:5000/book";
+    const apiUrl = "http://localhost:8000/book";
 
     async function logout() {
       try {
-        const res = await fetch("http://localhost:5000/logout", {
+        const res = await fetch("http://localhost:8000/logout", {
           method: "POST",
           credentials: "include"
         });
@@ -92,21 +321,20 @@
 
         books.forEach(book => {
           const row = document.createElement("tr");
-          row.className = "hover:bg-gray-50";
           row.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${book.id}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${book.title}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${book.author}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${book.genre}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$${book.price.toFixed(2)}</td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${book.instock > 0 ? 'text-green-600' : 'text-red-600'}">
-              ${book.instock} ${book.instock > 0 ? '<i class="fas fa-check-circle ml-1"></i>' : '<i class="fas fa-times-circle ml-1"></i>'}
+            <td>${book.id}</td>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.genre}</td>
+            <td>$${book.price.toFixed(2)}</td>
+            <td class="${book.instock > 0 ? 'text-green' : 'text-red'}">
+              ${book.instock} ${book.instock > 0 ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>'}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-              <button onclick="updateBook(${book.id})" class="text-primary-600 hover:text-primary-900 mr-3">
+            <td>
+              <button onclick="updateBook(${book.id})" class="action-btn edit-btn">
                 <i class="fas fa-edit"></i> Edit
               </button>
-              <button onclick="deleteBook(${book.id})" class="text-red-600 hover:text-red-900">
+              <button onclick="deleteBook(${book.id})" class="action-btn delete-btn">
                 <i class="fas fa-trash-alt"></i> Delete
               </button>
             </td>
@@ -129,39 +357,34 @@
         const book = await res.json();
 
         const modal = document.createElement('div');
-        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        modal.className = 'modal';
         modal.innerHTML = `
-          <div class="bg-white rounded-lg p-6 w-full max-w-md">
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Edit Book</h3>
-            <form id="editBookForm" class="space-y-4">
-              <div>
-                <label for="editTitle" class="block text-sm font-medium text-gray-700">Title</label>
-                <input type="text" id="editTitle" value="${book.title}" required
-                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"/>
+          <div class="modal-content">
+            <h3 class="modal-title">Edit Book</h3>
+            <form id="editBookForm">
+              <div class="form-group">
+                <label for="editTitle">Title</label>
+                <input type="text" id="editTitle" value="${book.title}" required>
               </div>
-              <div>
-                <label for="editAuthor" class="block text-sm font-medium text-gray-700">Author</label>
-                <input type="text" id="editAuthor" value="${book.author}" required
-                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"/>
+              <div class="form-group">
+                <label for="editAuthor">Author</label>
+                <input type="text" id="editAuthor" value="${book.author}" required>
               </div>
-              <div>
-                <label for="editGenre" class="block text-sm font-medium text-gray-700">Genre</label>
-                <input type="text" id="editGenre" value="${book.genre}" required
-                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"/>
+              <div class="form-group">
+                <label for="editGenre">Genre</label>
+                <input type="text" id="editGenre" value="${book.genre}" required>
               </div>
-              <div>
-                <label for="editPrice" class="block text-sm font-medium text-gray-700">Price</label>
-                <input type="number" step="0.01" id="editPrice" value="${book.price}" required
-                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"/>
+              <div class="form-group">
+                <label for="editPrice">Price</label>
+                <input type="number" step="0.01" id="editPrice" value="${book.price}" required>
               </div>
-              <div>
-                <label for="editInstock" class="block text-sm font-medium text-gray-700">In Stock</label>
-                <input type="number" id="editInstock" value="${book.instock}" required
-                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"/>
+              <div class="form-group">
+                <label for="editInstock">In Stock</label>
+                <input type="number" id="editInstock" value="${book.instock}" required>
               </div>
-              <div class="flex justify-end space-x-3 mt-6">
-                <button type="button" id="cancelEdit" class="bg-gray-300 px-4 py-2 rounded-md hover:bg-gray-400">Cancel</button>
-                <button type="submit" class="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700">Save</button>
+              <div class="modal-actions">
+                <button type="button" id="cancelEdit" class="cancel-btn">Cancel</button>
+                <button type="submit" class="save-btn">Save</button>
               </div>
             </form>
           </div>
