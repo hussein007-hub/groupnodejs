@@ -5,157 +5,147 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #e0f7fa; /* Light cyan background */
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .auth-container {
-      background-color: #ffffff; /* White card */
-      padding: 40px 30px;
-      max-width: 420px;
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .auth-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .auth-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #006064; /* Deep teal */
-      margin-bottom: 8px;
-    }
-
-    .auth-subtitle {
-      font-size: 14px;
-      color: #004d40; /* Darker teal */
-    }
-
-    .auth-form {
-      margin-top: 20px;
-    }
-
-    .input-group {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    .input-icon {
-      position: absolute;
-      top: 50%;
-      left: 16px;
-      transform: translateY(-50%);
-      font-size: 1.2rem;
-      color: #757575;
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 12px 16px 12px 44px;
-      border: 1px solid #b0bec5;
-      border-radius: 12px;
-      font-size: 14px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .form-input:focus {
-      outline: none;
-      border-color: #0097a7; /* Teal */
-      box-shadow: 0 0 0 3px rgba(0,151,167,0.2);
-    }
-
-    .form-options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .remember-me {
-      display: flex;
-      align-items: center;
-    }
-
-    .remember-me input {
-      margin-right: 8px;
-    }
-
-    .forgot-password {
-      font-size: 14px;
-    }
-
-    .forgot-link {
-      color: #0097a7;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .forgot-link:hover {
-      color: #006064;
-      text-decoration: underline;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 14px;
-      background-color: #0097a7; /* Teal */
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s, transform 0.2s;
-    }
-
-    .submit-btn:hover {
-      background-color: #00796b;
-      transform: translateY(-2px);
-    }
-
-    .btn-icon {
-      margin-right: 8px;
-      font-size: 1.2rem;
-    }
-
-    .auth-footer {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .auth-link {
-      color: #0097a7;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .auth-link:hover {
-      color: #006064;
-      text-decoration: underline;
-    }
-  </style>
 </head>
+<style>
+  /* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000; /* Black background */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Container */
+.auth-container {
+  background-color: #1a1a1a;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Header */
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #facc15; /* Gold-yellow */
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  font-size: 1rem;
+  color: #aaa;
+}
+
+/* Form */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input Group */
+.input-group {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #facc15;
+}
+
+.form-input {
+  width: 80%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #facc15;
+}
+
+/* Remember me & forgot password */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.remember-me input {
+  margin-right: 5px;
+}
+
+.forgot-link {
+  color: #facc15;
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Submit button */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #facc15;
+  color: #000;
+  font-size: 1rem;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #ffe066;
+}
+
+.btn-icon {
+  margin-right: 8px;
+}
+
+/* Footer */
+.auth-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.auth-link {
+  color: #facc15;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+</style>
 <body>
   <div class="auth-container">
     <div class="auth-header">
