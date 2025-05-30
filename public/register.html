@@ -1,140 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Register</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f3f4f6;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Reset some default styles */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
-    .auth-container {
-      width: 100%;
-      max-width: 400px;
-      padding: 32px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #e0f2f1; /* Soft teal background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-    
+
+    .auth-container {
+      background-color: #ffffff; /* White card */
+      padding: 40px;
+      max-width: 420px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
     .auth-header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 30px;
     }
-    
+
     .auth-title {
-      font-size: 28px;
-      font-weight: 800;
-      color: #111827;
-      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00695c; /* Dark teal */
+      margin-bottom: 8px;
     }
-    
+
     .auth-subtitle {
       font-size: 14px;
-      color: #6b7280;
-      margin-top: 8px;
+      color: #00796b; /* Slightly lighter teal */
     }
-    
+
     .auth-form {
-      margin-top: 24px;
+      margin-top: 20px;
     }
-    
+
     .input-group {
-      margin-bottom: 16px;
       position: relative;
+      margin-bottom: 20px;
     }
-    
+
     .input-icon {
       position: absolute;
       top: 50%;
-      left: 12px;
+      left: 16px;
       transform: translateY(-50%);
-      color: #9ca3af;
+      color: #757575;
+      font-size: 1.2rem;
     }
-    
+
     .form-input {
       width: 100%;
-      padding: 10px 12px 10px 36px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
+      padding: 12px 16px 12px 44px;
+      border: 1px solid #b0bec5;
+      border-radius: 12px;
       font-size: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    
+
     .form-input:focus {
       outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+      border-color: #00897b;
+      box-shadow: 0 0 0 3px rgba(0,137,123,0.2);
     }
-    
+
+    /* Submit button styles */
     .submit-btn {
       width: 100%;
-      padding: 10px;
-      background-color: #2563eb;
-      color: white;
+      padding: 14px;
+      background-color: #009688; /* Teal */
+      color: #fff;
+      font-size: 1rem;
       border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
+      border-radius: 12px;
       cursor: pointer;
-      position: relative;
-      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s, transform 0.2s;
     }
-    
+
     .submit-btn:hover {
-      background-color: #1d4ed8;
+      background-color: #00796b;
+      transform: translateY(-2px);
     }
-    
+
     .btn-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #93c5fd;
+      margin-right: 8px;
+      font-size: 1.2rem;
     }
-    
-    .submit-btn:hover .btn-icon {
-      color: #bfdbfe;
-    }
-    
+
+    /* Footer styles */
     .auth-footer {
       text-align: center;
       margin-top: 24px;
       font-size: 14px;
-      color: #6b7280;
+      color: #555;
     }
-    
+
     .auth-link {
-      color: #2563eb;
+      color: #009688;
+      font-weight: 600;
       text-decoration: none;
-      font-weight: 500;
     }
-    
+
     .auth-link:hover {
-      color: #1d4ed8;
       text-decoration: underline;
+      color: #00796b;
     }
-    
+
     #message {
+      margin-top: 16px;
       text-align: center;
       font-size: 14px;
-      margin-top: 16px;
     }
-    
+
     .success-message {
-      color: #16a34a;
+      color: #2e7d32; /* Green */
     }
-    
+
     .error-message {
-      color: #dc2626;
+      color: #c62828; /* Red */
     }
   </style>
 </head>
@@ -144,44 +147,34 @@
       <h1 class="auth-title">Create an account</h1>
       <p class="auth-subtitle">Join us today</p>
     </div>
-    
-    <form id="registerForm" class="auth-form">
+    <form id="registerForm" class="auth-form" autocomplete="off">
       <div class="input-group">
         <div class="input-icon">
           <i class="fas fa-user"></i>
         </div>
-        <input id="fullnames" name="fullnames" type="text" required 
-          class="form-input" placeholder="Full Names">
+        <input id="fullnames" name="fullnames" type="text" required placeholder="Full Names" class="form-input" />
       </div>
       
       <div class="input-group">
         <div class="input-icon">
           <i class="fas fa-at"></i>
         </div>
-        <input id="username" name="username" type="text" required 
-          class="form-input" placeholder="Username">
+        <input id="username" name="username" type="text" required placeholder="Username" class="form-input" />
       </div>
       
       <div class="input-group">
         <div class="input-icon">
           <i class="fas fa-lock"></i>
         </div>
-        <input id="password" name="password" type="password" required 
-          class="form-input" placeholder="Password">
+        <input id="password" name="password" type="password" required placeholder="Password" class="form-input" />
       </div>
 
       <button type="submit" class="submit-btn">
-        <span class="btn-icon">
-          <i class="fas fa-user-plus"></i>
-        </span>
-        Register
+        <i class="fas fa-user-plus btn-icon"></i> Register
       </button>
     </form>
-    
     <div class="auth-footer">
-      <p>Already have an account? 
-        <a href="/login" class="auth-link">Sign in</a>
-      </p>
+      <p>Already have an account? <a href="/login" class="auth-link">Sign in</a></p>
     </div>
     <p id="message"></p>
   </div>
@@ -206,7 +199,7 @@
           headers: {
             "Content-Type": "application/json"
           },
-          credentials: "include", // Important for session cookies
+          credentials: "include",
           body: JSON.stringify({ fullnames, username, password })
         });
 
@@ -215,8 +208,7 @@
         if (res.ok) {
           document.getElementById("message").textContent = data.message || "Registration successful! Redirecting...";
           document.getElementById("message").className = "success-message";
-          
-          // Automatically log in the user after registration
+
           try {
             const loginRes = await fetch("http://localhost:8000/login", {
               method: "POST",
@@ -228,10 +220,8 @@
             });
 
             if (loginRes.ok) {
-              // Redirect to dashboard after successful login
               window.location.href = "/dashboard";
             } else {
-              // If auto-login fails, redirect to login page
               window.location.href = "/login";
             }
           } catch (loginErr) {
@@ -246,17 +236,15 @@
         document.getElementById("message").className = "error-message";
       } finally {
         button.disabled = false;
-        button.innerHTML = originalText;
+        button.innerHTML = '<i class="fas fa-user-plus"></i> Register';
       }
     });
 
-    // Check if user is already logged in (prevent accessing register page when logged in)
     async function checkAuthStatus() {
       try {
         const res = await fetch("http://localhost:8000/auth/status", {
           credentials: "include"
         });
-        
         if (res.ok) {
           const data = await res.json();
           if (data.authenticated) {
@@ -268,7 +256,7 @@
       }
     }
 
-    // Run auth check when page loads
+    // Run auth check on page load
     checkAuthStatus();
   </script>
 </body>

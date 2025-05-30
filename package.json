@@ -6,7 +6,7 @@
     "express-session": "^1.18.1",
     "mysql2": "^3.14.1"
   },
- "scripts": {
-  "dev": "node app.js"
+  "scripts": {
+    "dev": "node app.js"
   }
 }
